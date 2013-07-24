@@ -6,14 +6,44 @@
 @import "CMS";
 
 /* Compass Configs */
-// @import "compass/reset";
-// @import "compass";
+@import "compass/reset";
+@import "compass";
 
 /* Susy or alternative grid engine here */
-// @import "susy";
+@import "susy";
 
 /* Custom Imports */
 @import "configs";
-@import "color";
+@import "nav";
 @import "typo";
 @import "main";
+@import "bugfix";
+
+/* Dev Only */
+.primary, .secondary, .tertiary, .white, .gray1, .gray2, .gray3, .black {
+	width: 100%; height: 100px;
+}
+.primary {
+	background: $primary-color;
+}
+.secondary {
+	background: $secondary-color;
+}
+.tertiary {
+	background: $tertiary-color;
+}
+.white {
+	background: $white;
+}
+.gray1 {
+	background: $gray_primary;
+}
+.gray2 {
+	background: $gray_secondary;
+}
+.gray3 {
+	background: $gray_tertiary;
+}
+.black {
+	background: $black;
+}

@@ -6,13 +6,112 @@
 	$alt-font
 */
 
+@include establish-baseline;
+
+html {
+	@include adjust-leading-to(4);
+}
+
 h1,h2,h3,h4,h5,h6 {
 	font-family: $header-font;
+}
+h1 {
+	$h1_size: $base-font-size * 1.618 * 2.25;
+	@include adjust-font-size-to($h1_size);
+	@include rhythm(4,4,3,2, $h1_size);
+}
+h2 {
+	$h2_size: $base-font-size * 1.618 * 2;
+	@include adjust-font-size-to($h2_size);
+	@include rhythm(4,4,3,1, $h2_size);
+}
+h3 {
+	$h3_size: $base-font-size * 1.618 * 1.75;
+	@include adjust-font-size-to($h3_size);
+	@include rhythm(4,2,1,2, $h3_size);
+}
+h4 {
+	$h4_size: $base-font-size * 1.618 * 1.5;
+	@include adjust-font-size-to($h4_size);
+	@include rhythm(3,3,1,2, $h4_size);
+}
+h5 {
+	$h5_size: $base-font-size * 1.618 * 1.25;
+	@include adjust-font-size-to($h5_size);
+	@include rhythm(2,2,1,2, $h5_size);
+}
+h6 {
+	$h6_size: $base-font-size * 1.618 * 1;
+	@include adjust-font-size-to($h6_size);
+	@include rhythm(1,1,0,1, $h6_size);
 }
 
 p {
 	font-family: $body-font;
+	@include rhythm(1,1,1,1, $base-font-size);
+	&:first-of-type {
+		text-indent: 2em;
+	}
+}
+ul, ol, blockquote, small {
+	font-family: $body-font;
+	@include rhythm(1,1,1,1, $base-font-size);
+}
+ul { list-style: disc inside; }
+ol { list-style: decimal inside; }
+li {
+	font-family: $body-font;
+	@include rhythm(1,0,0,1, $base-font-size);
+	p:first-of-type { text-indent: 0; }
 }
 strong, b { font-weight: bold; }
 em, i { font-style: italic; }
 
+blockquote {
+	@include adjust-font-size-to(14px);
+	margin: rhythm(5, 15px) auto;
+	padding: rhythm(3, 14px) rhythm(3, 14px);
+}
+
+code {
+	counter-reset: line;
+	background: $black;
+	@include adjust-font-size-to(14px);
+	ol {
+		margin: 0 auto; width: 90%; padding: 0;
+		border: 1px solid $white;
+		@include box-shadow(0 0 em(10px) 0 $black);
+		@include rhythm(6,0,0,6);
+		li {
+			list-style: none;
+			margin: 0 0 0 2em;
+			padding: .25em 1em .25em 1em;
+			position: relative;
+			font-family: $mono-font;
+			color: $white;
+			&:nth-child(odd) {
+				background: $gray_tertiary;
+			}
+			&:nth-child(even) {
+				background: scale-lightness($gray_tertiary, 15%);
+			}
+			&:before {
+				counter-increment: line;
+				border-right: 1px solid $white;
+				padding: 0 0 0 .25em;
+				line-height: 1.75em;
+				content: counters(line,".")".";
+				background: $black; height: 100%; width: 2em;
+				top: 0; left: -2em; position: absolute;
+			}
+		}
+	}
+}
+
+small {
+	@include adjust-font-size-to(12px, 4/5);
+}
+
+/*
+ * Custom Typo
+ */

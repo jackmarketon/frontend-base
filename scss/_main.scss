@@ -1,0 +1,10 @@
+* { @include box-sizing(border-box); }
+
+body {
+	background: $white;
+}
+
+.wrap {
+	width: 100%;
+	@include container;
+}
